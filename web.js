@@ -6,7 +6,7 @@ var buffer = new Buffer(30);
 fs.readFileSync('index.html',buffer);
 app.get('/', function(request, response) {
 
-response.send(buffer.toString('utf-8'));
+response.send(buffer.toString('ascii'));
 });
 
 var port = process.env.PORT || 5000;
