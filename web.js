@@ -3,7 +3,7 @@ var fs=require('fs');
 var htmlfile="index.html";
 
 var app = express.createServer(express.logger());
-
+app.use('/bittu', express.static(__dirname, '/bittu'));
 app.get('/', function(request, response) {
 var html=fs.readFileSync(htmlfile);
 response.send(html);
