@@ -1,12 +1,12 @@
 var express = require('express');
-var fs=require('fs');
-var htmlfile="index.html";
-
-var app = express.createServer(express.logger());
-app.use('/bittu', express.static(__dirname, '/bittu'));
+var app = express();
+var fs  = require('fs');
+app.use(express.logger());
+var buffer = new Buffer(30);
+buffer=fs.readFileSync('index.html','utf-8');
 app.get('/', function(request, response) {
-var html=fs.readFileSync(htmlfile);
-response.send(html);
+
+response.send(buffer.toString('ascii',0,27));
 });
 
 var port = process.env.PORT || 8080;
